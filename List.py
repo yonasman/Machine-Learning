@@ -21,4 +21,11 @@ def remove_duplicates(nums):
             unique_nums.append(num)
     return unique_nums
 # print(remove_duplicates([1,2,3,3,4]))
-        
+# problem3: sum of all evens
+def sum_of_evens(nums):
+    sum = 0
+    for num in nums:
+        if num % 2 == 0:
+            sum += num
+    return sum
+# print(sum_of_evens([1,2,3,4]))
