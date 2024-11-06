@@ -13,3 +13,12 @@ def second_largest(nums):
     # return the second largest element
     return sorted_nums[1]
 # print(second_largest([1,2,3,4,5]))
+# problem remove duplicates
+def remove_duplicates(nums):
+    unique_nums = []
+    for num in nums:
+        if num not in unique_nums:
+            unique_nums.append(num)
+    return unique_nums
+# print(remove_duplicates([1,2,3,3,4]))
+        
