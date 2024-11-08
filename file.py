@@ -43,3 +43,31 @@ def remove_punctuation(s):
     newStr = s.translate(s.maketrans('Hello','hello',string.punctuation))
     return newStr
 # print(remove_punctuation("Hello, how you doing?"))
+name = input("Enter file:")
+if len(name) < 1:
+    name = "mbox-short.txt"
+handle = open(name)
+hours = []
+
+for line in handle:
+    line = line.rstrip()
+    #print(line)
+    
+    if line.startswith('From:'):
+        continue
+    elif line.startswith("From"):
+        splittedLine = line.split()
+        hours.append(splittedLine[5][:2])
+     
+# hours count hashmap
+hoursCount = {}
+
+for h in hours:
+    hoursCount[h] = hoursCount.get(h,0) + 1
+    
+# print hours with their count
+hourTuples = hoursCount.items()
+sortedHours = sorted(hourTuples)
+
+for k,v in sortedHours:
+    print(k,v)
