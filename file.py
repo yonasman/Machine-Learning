@@ -41,33 +41,45 @@ def rename_file(filename, newname):
 import string
 def remove_punctuation(s):
     newStr = s.translate(s.maketrans('Hello','hello',string.punctuation))
-    return newStr
-# print(remove_punctuation("Hello, how you doing?"))
-name = input("Enter file:")
-if len(name) < 1:
-    name = "mbox-short.txt"
-handle = open(name)
-hours = []
-
-for line in handle:
-    line = line.rstrip()
-    #print(line)
-    
-    if line.startswith('From:'):
-        continue
-    elif line.startswith("From"):
-        splittedLine = line.split()
-        hours.append(splittedLine[5][:2])
+    return newStr    
+    # if line.startswith('From:'):
+    #     continue
+    # elif line.startswith("From"):
+    #     splittedLine = line.split()
+    #     hours.append(splittedLine[5][:2])
      
-# hours count hashmap
-hoursCount = {}
+# print(remove_punctuation("Hello, how you doing?"))
+# name = input("Enter file:")
+# if len(name) < 1:
+#     name = "mbox-short.txt"
+# handle = open(name)
+# hours = []
 
-for h in hours:
-    hoursCount[h] = hoursCount.get(h,0) + 1
+# for line in handle:
+    #print(line)
+
+# hours count hashmap
+# hoursCount = {}
+
+# for h in hours:
+#     hoursCount[h] = hoursCount.get(h,0) + 1
     
 # print hours with their count
-hourTuples = hoursCount.items()
-sortedHours = sorted(hourTuples)
+# hourTuples = hoursCount.items()
+# sortedHours = sorted(hourTuples)
 
-for k,v in sortedHours:
-    print(k,v)
+# for k,v in sortedHours:
+    # print(k,v)
+# function to compare by len of string
+def compareByLen(s):
+    wordLenPair = []
+    for word in s.split():
+        wordLenPair.append((len(word),word))
+    wordLenPair = sorted(wordLenPair)
+
+    # build the final sorted list
+    sortedList = []
+    for length, word in wordLenPair:
+        sortedList.append(word)
+    return sortedList
+# print(compareByLen('but soft what light in yonder window breaks'))
