@@ -83,3 +83,16 @@ def compareByLen(s):
         sortedList.append(word)
     return sortedList
 # print(compareByLen('but soft what light in yonder window breaks'))
+# working with regular expressions
+# reading a file and compute the sum of numbers in the text
+import re
+def read_and_compute_sum(filename):
+    sum = 0
+    with open(filename) as file:
+        for line in file:
+            nums = re.findall('[0-9]+',line)
+            if len(nums) > 0:
+                for num in nums:
+                    sum += int(num)
+    return sum
+# print(read_and_compute_sum('regex_sum_2117125.txt'))
