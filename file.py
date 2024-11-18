@@ -96,3 +96,39 @@ def read_and_compute_sum(filename):
                     sum += int(num)
     return sum
 # print(read_and_compute_sum('regex_sum_2117125.txt'))
+# parsing xml
+import xml.etree.ElementTree as ET
+def xmlParser():
+    data = '''
+    <parent>
+        <name>Yonas</name>
+        <age>23</age>
+        <email hide="yes">yonpython@gmail.com</email>
+    </parent>
+    '''
+    tree = ET.fromstring(data)
+    print("Name:", tree.find('name').text)
+    print("attr:", tree.find('email').get('hide'))
+# xmlParser()
+def xmlParser_2():
+    data= '''
+    <staff>
+        <users>
+            <user>
+                <id>001</id>
+                <name>yonas</name>
+            </user>
+            <user>
+                <id>002</id>
+                <name>john</name>
+            </user>
+        </users>
+    </staff>
+    '''
+    staff = ET.fromstring(data)
+    users = staff.findall('users/user')
+    print("Number of users:", len(users))
+    for user in users:
+        print("id:", user.find('id').text)
+        print("name:",user.find('name').text)
+xmlParser_2()
