@@ -146,4 +146,39 @@ def read_and_parse():
     for count in counts:
         total_sum += int(count.text)
     return total_sum
-print(read_and_parse())
+# print(read_and_parse())
+# working with json
+import json
+def working_with_json():
+    data = '''[ "Glenn", "Sally", "Jen" ]'''
+    info = json.loads(data)
+    print(info)
+# working_with_json()
+#*******************
+def read_and_compute_json():
+    url = input("Enter your location: ")
+    response = urllib.request.urlopen(url)
+    data = response.read().decode()
+    
+    # load the json to python
+    py_data = json.loads(data)
+    counts = py_data["comments"]
+    total_sum = 0
+    for item in counts:
+        total_sum += int(item["count"])
+    return total_sum
+# print(read_and_compute_json())
+def parse_json_api():
+    url = "http://py4e-data.dr-chuck.net/opengeo?"
+    location = input("Enter your location: ")
+    address = location.strip()
+    param = dict()
+    param['q'] = address
+    query_param = urllib.parse.urlencode(param)
+    # make a request to the url
+    response = urllib.request.urlopen(url + query_param)
+    data = response.read().decode()
+    # parse the data into python format
+    js = json.loads(data)
+    return js["features"][0]["properties"]["plus_code"]
+# parse_json_api()
