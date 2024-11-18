@@ -1,5 +1,6 @@
 # working with files
 import os
+import urllib.parse
 # creating file
 def create_file(filename):
     try:
@@ -131,4 +132,18 @@ def xmlParser_2():
     for user in users:
         print("id:", user.find('id').text)
         print("name:",user.find('name').text)
-xmlParser_2()
+# xmlParser_2()
+# read from url and parse xml
+import urllib.request
+def read_and_parse():
+    url = input("Enter your url: ")
+    response = urllib.request.urlopen(url)
+    data = response.read().decode('utf-8')
+    # parse the xml
+    tree = ET.fromstring(data)
+    counts = tree.findall(".//count")
+    total_sum = 0
+    for count in counts:
+        total_sum += int(count.text)
+    return total_sum
+print(read_and_parse())
