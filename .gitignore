@@ -1,2 +1,5 @@
 emaildb.sqlite
 mbox.txt
+trackDB.sqlite
+emailCountDB.sqlite
+tracks.csv
