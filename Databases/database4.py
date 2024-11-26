@@ -67,4 +67,4 @@ def read_and_insert():
                         VALUES(?,?,?)''',(user_id,course_id,role))
         # commit to the db
         conn.commit()
-read_and_insert()
+# read_and_insert()
